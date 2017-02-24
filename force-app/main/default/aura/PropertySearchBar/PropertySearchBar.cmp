@@ -3,6 +3,7 @@
     <aura:registerEvent name="propertySearchKeyChange" type="c:PropertySearchKeyChange"/>
     
     <div>
+        <h1>HEY Dood!</h1>
         <div class="slds-form-element">
             <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
                 <input aura:id="searchKey" class="slds-input slds-input-has-icon slds-input-has-icon--left" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" 
