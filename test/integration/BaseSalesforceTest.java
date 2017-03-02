@@ -80,7 +80,9 @@ public class BaseSalesforceTest {
         }
 
         driver.get(frontDoorUrl);
-        return driver.getPageSource();
+        String pageSource = driver.getPageSource();
+        System.out.println(pageSource);
+        return pageSource;
     }
 
     public WebElement fluentWait(final By locator) {
