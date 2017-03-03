@@ -16,6 +16,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.google.common.base.Function;
 import org.openqa.selenium.support.ui.*;
 
+import io.github.bonigarcia.wdm.PhantomJsDriverManager;
+
 /**
  * Base test.
  */
@@ -36,14 +38,16 @@ public class BaseSalesforceTest {
         switch (mode) {
             case "PHANTOM":
                 // USING PHANTOM
-                caps = new DesiredCapabilities();
-                caps.setCapability(
-                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                    getProperty("PHANTOM_BINARY_PATH")
-                );
-                caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
-                caps.setJavascriptEnabled(true);
-                driver = new PhantomJSDriver(caps);
+                PhantomJsDriverManager.getInstance().setup("phantomjs-2.1.1");
+                caps = DesiredCapabilities.phantomjs();
+                // caps = new DesiredCapabilities();
+                // caps.setCapability(
+                //     PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                //     getProperty("PHANTOM_BINARY_PATH")
+                // );
+                // caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                // caps.setJavascriptEnabled(true);
+                driver = new PhantomJSDriver();
                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 driver.manage().window().setSize(new Dimension(1280, 1024));
                 break;
