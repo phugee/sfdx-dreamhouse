@@ -41,6 +41,7 @@ public class BaseSalesforceTest {
                     PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                     getProperty("PHANTOM_BINARY_PATH")
                 );
+                caps.setJavascriptEnabled(true);
                 driver = new  PhantomJSDriver(caps);
                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 driver.manage().window().setSize(new Dimension(1280, 1024));
