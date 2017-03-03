@@ -41,8 +41,8 @@ public class BaseSalesforceTest {
                     PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
                     getProperty("PHANTOM_BINARY_PATH")
                 );
-                caps.setCapability("javascriptEnabled", true);
-                // caps.setJavascriptEnabled(true);
+                caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                caps.setJavascriptEnabled(true);
                 driver = new PhantomJSDriver(caps);
                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
                 driver.manage().window().setSize(new Dimension(1280, 1024));
