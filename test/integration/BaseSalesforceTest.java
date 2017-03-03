@@ -83,6 +83,7 @@ public class BaseSalesforceTest {
 
         driver.get(frontDoorUrl);
         String pageSource = driver.getPageSource();
+        System.out.println(frontDoorUrl);
         System.out.println(pageSource);
         return pageSource;
     }
