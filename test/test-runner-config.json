@@ -53,7 +53,7 @@
             "exec": "java",
             "args": [
                 "-cp",
-                ".:$outputDir/selenium-3.2.0/*:$outputDir/selenium-3.2.0/libs/*:$outputDir",
+                ".:$outputDir/selenium-2.53.1/*:$outputDir/selenium-2.53.1/libs/*:$outputDir",
                 "$TEST_VAL"
             ]
         }
