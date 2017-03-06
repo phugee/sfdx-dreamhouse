@@ -5,6 +5,6 @@
   "Email": "xxx@xxx.com",
   "Edition": "Developer",
   "OrgPreferences" : {
-    "S1DesktopEnabled" : true
+    "S1DesktopEnabled" : false
   }
 }
