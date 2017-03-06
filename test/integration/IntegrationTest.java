@@ -18,7 +18,7 @@ public class IntegrationTest extends BaseSalesforceTest {
         ((JavascriptExecutor) driver).executeScript("window.location.hash='#/sObject/Property__c/home'");
 
         // Close the "Welcome to Salesforce" modal if it is displayed
-        this.fluentWait(By.className("slds-modal__close")).click();
+        // this.fluentWait(By.className("slds-modal__close")).click();
 
         this.fluentWait(By.xpath("//a[contains(text(), 'Contemporary Luxury')]")).click();
         Assert.assertTrue(this.fluentWait(By.xpath("//span[contains(text(), 'Contemporary Luxury')]")).isDisplayed());
