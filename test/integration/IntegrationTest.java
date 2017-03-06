@@ -12,17 +12,23 @@ import org.junit.runner.JUnitCore;
 public class IntegrationTest extends BaseSalesforceTest {
     @Test
     public void testIntegration() {
-        // this.login("/one/one.app#/sObject/Property__c/home");
-        this.login("/a02/o");
+        try {
+            // this.login("/one/one.app#/sObject/Property__c/home");
+            this.login("/a02/o");
 
-        // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
-        // ((JavascriptExecutor) driver).executeScript("window.location.hash='#/sObject/Property__c/home'");
+            // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
+            // ((JavascriptExecutor) driver).executeScript("window.location.hash='#/sObject/Property__c/home'");
 
-        // Close the "Welcome to Salesforce" modal if it is displayed
-        // this.fluentWait(By.className("slds-modal__close")).click();
+            // Close the "Welcome to Salesforce" modal if it is displayed
+            // this.fluentWait(By.className("slds-modal__close")).click();
 
-        this.fluentWait(By.xpath("//a[contains(text(), 'Contemporary Luxury')]")).click();
-        Assert.assertTrue(this.fluentWait(By.xpath("//span[contains(text(), 'Contemporary Luxury')]")).isDisplayed());
+            this.fluentWait(By.xpath("//a[contains(text(), 'Contemporary Luxury')]")).click();
+            Assert.assertTrue(this.fluentWait(By.xpath("//span[contains(text(), 'Contemporary Luxury')]")).isDisplayed());
+
+        } catch(Exception e) {
+            System.out.println(driver.getPageSource());
+            throw e;
+        }
     }
 
 	public static void main(String[] args) {
