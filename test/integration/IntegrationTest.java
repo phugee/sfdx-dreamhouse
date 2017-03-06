@@ -13,14 +13,14 @@ public class IntegrationTest extends BaseSalesforceTest {
     @Test
     public void testIntegration() {
         try {
-            // this.login("/one/one.app#/sObject/Property__c/home");
-            this.login("/a02/o");
+            this.login("/one/one.app#/sObject/Property__c/home");
+            // this.login("/a02/o");
 
             // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
-            // ((JavascriptExecutor) driver).executeScript("window.location.hash='#/sObject/Property__c/home'");
+            ((JavascriptExecutor) driver).executeScript("window.location.hash='#/sObject/Property__c/home'");
 
             // Close the "Welcome to Salesforce" modal if it is displayed
-            // this.fluentWait(By.className("slds-modal__close")).click();
+            this.fluentWait(By.className("slds-modal__close")).click();
 
             this.fluentWait(By.xpath("//a[contains(text(), 'Contemporary Luxury')]")).click();
             Assert.assertTrue(this.fluentWait(By.xpath("//span[contains(text(), 'Contemporary Luxury')]")).isDisplayed());
