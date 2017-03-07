@@ -22,9 +22,10 @@ public class IntegrationTest extends BaseSalesforceTest {
             System.out.println("AFTER login");
 
             // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
-            ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 25000)");
+            ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 5000)");
 
             System.out.println("AFTER executeScript");
+            System.out.println("CURRENT_URL=" + driver.getCurrentUrl());
 
             // Close the "Welcome to Salesforce" modal if it is displayed
             this.fluentWait(By.className("slds-modal__close")).click();
@@ -41,7 +42,7 @@ public class IntegrationTest extends BaseSalesforceTest {
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             // Now you can do whatever you need to do with it, for example copy somewhere
             FileUtils.copyFile(scrFile, new File(getProperty("OUTPUT_DIR") + "/screenshot.png"));
-            System.out.println("CURRENT_URL=" + driver.getCurrentUrl());
+            // System.out.println("CURRENT_URL=" + driver.getCurrentUrl());
             System.out.println(driver.getPageSource());
             throw e;
         }
