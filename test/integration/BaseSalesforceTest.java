@@ -111,11 +111,11 @@ public class BaseSalesforceTest {
         return foo;
     };
 
-    private String getProperty(String name) {
+    protected String getProperty(String name) {
         return getProperty(name, false);
     }
 
-    private String getProperty(String name, Boolean allowEmpty) {
+    protected String getProperty(String name, Boolean allowEmpty) {
         String prop = System.getProperty(name);
 
         if (isEmpty(prop)) {
