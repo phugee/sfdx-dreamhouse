@@ -21,14 +21,12 @@ public class IntegrationTest extends BaseSalesforceTest {
             // this.login("/a02/o");
 
             System.out.println("AFTER login");
-            System.out.println("CURRENT_URL=" + driver.getCurrentUrl());
 
-            driver.navigate().to(driver.getCurrentUrl() + "#/sObject/Property__c/home");
+            // driver.navigate().to(driver.getCurrentUrl() + "#/sObject/Property__c/home");
 
             // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
             // ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 5000)");
 
-            System.out.println("AFTER executeScript");
             System.out.println("CURRENT_URL=" + driver.getCurrentUrl());
 
             // Close the "Welcome to Salesforce" modal if it is displayed
