@@ -38,11 +38,11 @@ public class BaseSalesforceTest {
                 // USING PHANTOM
                 caps = DesiredCapabilities.phantomjs();
                 // caps = new DesiredCapabilities();
-                // caps.setCapability(
-                //     PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                //     getProperty("PHANTOM_BINARY_PATH")
-                // );
-                // caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                caps.setCapability(
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                    getProperty("PHANTOM_BINARY_PATH")
+                );
+                caps.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                 caps.setJavascriptEnabled(true);
                 driver = new PhantomJSDriver(caps);
                 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
