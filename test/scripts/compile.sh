@@ -20,6 +20,12 @@ SELENIUM_EXTRACTED_PATH=$OUTPUT_DIR/selenium-$SELENIUM_VERSION
 #The location of the selenium client jar
 SELENIUM_CLIENT_JAR=$SELENIUM_EXTRACTED_PATH/$SELENIUM_NAME.jar
 
+COMMONS_IO_FILE_NAME=commons-io-2.5-bin.zip
+COMMONS_IO_ZIP=$OUTPUT_DIR/$COMMONS_IO_FILE_NAME
+COMMONS_IO_URL=http://apache.cs.utah.edu/commons/io/binaries/$COMMONS_IO_FILE_NAME
+COMMONS_IO_EXTRACTED_PATH=$OUTPUT_DIR/commons-io-2.5
+COMMONS_IO_JAR=COMMONS_IO_EXTRACTED_PATH/commons-io-2.5.jar
+
 #The location of the selenium client libraries
 SELENIUM_CLIENT_LIBS=$SELENIUM_EXTRACTED_PATH/libs/*
 
@@ -31,4 +37,12 @@ if [ ! -d "$SELENIUM_EXTRACTED_PATH" ]; then
     unzip -o $SELENIUM_CLIENT_ZIP -d $OUTPUT_DIR
 else echo "Using cached selenium jars"; fi
 
-javac -cp .:$SELENIUM_CLIENT_JAR:$SELENIUM_CLIENT_LIBS -d $OUTPUT_DIR test/integration/*
+if [ ! -d "$COMMONS_IO_EXTRACTED_PATH" ]; then
+    if [ ! -f "$COMMONS_IO_ZIP" ]; then
+        curl -o $COMMONS_IO_ZIP $COMMONS_IO_URL
+    else echo "Using cached apache commons.io zip"; fi
+
+    unzip -o $COMMONS_IO_ZIP -d $OUTPUT_DIR
+else echo "Using cached commons.io jars"; fi
+
+javac -cp .:$SELENIUM_CLIENT_JAR:$SELENIUM_CLIENT_LIBS:$COMMONS_IO_JAR -d $OUTPUT_DIR test/integration/*

@@ -3,7 +3,9 @@ package test.integration;
 import java.util.List;
 import org.junit.*;
 import org.openqa.selenium.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
 
 import org.junit.runner.JUnitCore;
 
@@ -12,22 +14,27 @@ import org.junit.runner.JUnitCore;
  */
 public class IntegrationTest extends BaseSalesforceTest {
     @Test
-    public void testIntegration() {
+    public void testIntegration() throws Exception {
         try {
             this.login("/one/one.app#/sObject/Property__c/home");
             // this.login("/a02/o");
 
+            System.out.println("AFTER login");
+
             // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
             ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 10000)");
 
-            System.out.println();
+            System.out.println("AFTER executeScript");
 
             // Close the "Welcome to Salesforce" modal if it is displayed
             this.fluentWait(By.className("slds-modal__close")).click();
 
-            System.out.println();
+            System.out.println("AFTER modal close");
 
             this.fluentWait(By.xpath("//a[contains(text(), 'Contemporary Luxury')]")).click();
+
+            System.out.println("AFTER clicking on Contemporary Luxury link");
+
             Assert.assertTrue(this.fluentWait(By.xpath("//span[contains(text(), 'Contemporary Luxury')]")).isDisplayed());
 
         } catch(Exception e) {
