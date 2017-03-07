@@ -16,7 +16,8 @@ public class IntegrationTest extends BaseSalesforceTest {
     @Test
     public void testIntegration() throws Exception {
         try {
-            this.login("/one/one.app#/sObject/Property__c/home");
+            // this.login("/one/one.app#/sObject/Property__c/home");
+            this.login("/one/one.app");
             // this.login("/a02/o");
 
             System.out.println("AFTER login");
