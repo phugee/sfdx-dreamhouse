@@ -22,7 +22,7 @@ public class IntegrationTest extends BaseSalesforceTest {
             System.out.println("AFTER login");
 
             // Salesforce retUrl will strip the hash. Selenium driver.get() will hang on a hash. SO set the hash manually.
-            ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 5000)");
+            ((JavascriptExecutor) driver).executeScript("setTimeout(function() { window.location.hash='#/sObject/Property__c/home'; }, 25000)");
 
             System.out.println("AFTER executeScript");
 
