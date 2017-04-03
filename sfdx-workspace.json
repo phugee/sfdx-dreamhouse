@@ -5,5 +5,7 @@
     }
   ],
   "Namespace": "",
-  "SourceApiVersion": "39.0"
+  "SourceApiVersion": "39.0",
+  "UseDecomposition": true
 }
+
