@@ -1,7 +1,7 @@
 {
     "settings": {
         "outputDir": "$WORKSPACE/test/artifacts/$DATETIME[X]",
-        "selenium": true
+        "selenium": false
     },
     "data": [
         {
@@ -66,6 +66,18 @@
                 ".:$outputDir/selenium-2.53.1/*:$outputDir/selenium-2.53.1/libs/*:$outputDir",
                 "$TEST_VAL"
             ]
+        },
+        {
+            "name": "run-lightning-tests",
+            "type": "spawn",
+            "exec": "sfdx",
+            "args": [
+                "force:lightning:test:run",
+                "-r",
+                "junit",
+                "-d",
+                "$outputDir"
+            ]
         }
     ],
     "contexts": [
@@ -109,11 +121,25 @@
                 "basic",
                 "integration"
             ]
-        }, {
+        },
+        {
             "name": "master-aloha",
             "refs": [
                 "basic",
                 "integration-aloha"
+            ]
+        },
+        {
+            "name": "lightning",
+            "orgs": ["dreamhouse-default"],
+            "testCommand": "run-lightning-tests",
+            "tests": [ "nada" ]
+        },
+        {
+            "name": "apex-lightning",
+            "refs": [
+                "basic",
+                "lightning"
             ]
         }
     ]
