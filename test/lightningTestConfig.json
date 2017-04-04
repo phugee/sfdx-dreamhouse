@@ -1,9 +1,9 @@
 {
-	"webdriverio": {
-		"desiredCapabilities": {
-			"browserName": "chrome"
-		}
-	},
-	"timeout": "50000",
-	"outputDivId": "run_results_full"
+    "webdriverio": {
+        "desiredCapabilities": {
+            "browserName": "chrome"
+        }
+    },
+    "timeout": "50000",
+    "outputDivId": "run_results_full"
 }
