@@ -1,5 +1,6 @@
 {
   "Company": "Your Company",
+  "Country": "US",
   "Edition": "Developer",
   "OrgPreferences" : {
     "S1DesktopEnabled" : true
